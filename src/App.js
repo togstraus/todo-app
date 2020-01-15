@@ -1,20 +1,28 @@
 import React from 'react';
 import './App.css';
 import TodoList from './components/TodoList';
+import AddTodo from './components/AddTodo';
 
 class App extends React.Component {
 
   constructor(props){
     super(props);
     this.state = {
+      todos: [],
+      loading: true,
+    }  
+  }
+
+  componentDidMount(){
+    setTimeout(() => this.setState({
       todos: [
         {id: 1 , title: 'Молоко', completed: false},
         {id: 2 , title: 'Сыр', completed: false},
         {id: 3 , title: 'Майонез', completed: false},
-      ]
-    }  
+      ],
+      loading: false,
+    }), 3000);
   }
-
   onAdd = title => {
     this.setState(prevState => ({
       todos: [
@@ -45,16 +53,27 @@ class App extends React.Component {
     }))
   };
 
+  
   render(){ 
+
+    const { todos, loading } = this.state;
+
     return (
       <>
         <h1>My React Todo App</h1>
+        <AddTodo
+        onAdd={this.onAdd}
+        />
+        {loading ? (
+        <span>Loading...</span>
+        ) : todos.length !== 0 ? (
         <TodoList 
         todos={this.state.todos}
         onToggle={this.onToggle}
         onDelete={this.onDelete}
-        onAdd={this.onAdd}
+        
         />
+        ) : ( <span>Дела кончились :(</span>)}        
       </>
     
     );
