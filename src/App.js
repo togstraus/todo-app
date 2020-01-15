@@ -8,25 +8,42 @@ class App extends React.Component {
     super(props);
     this.state = {
       todos: [
-        {d: 1 , title: 'Молоко', completed: false},
+        {id: 1 , title: 'Молоко', completed: false},
         {id: 2 , title: 'Сыр', completed: false},
-        { id: 3 , title: 'Майонез', completed: false},
+        {id: 3 , title: 'Майонез', completed: false},
       ]
     }  
   }
 
+  onAdd = title => {
+    this.setState(prevState => ({
+      todos: [
+        ...prevState.todos,
+        {
+          id: Date.now(),
+          title,
+          completed: false,
+        }
+      ]
+    }))
+  };
+
+  onDelete = id => {
+    this.setState(prevState => ({
+      todos: prevState.todos.filter(todo => todo.id !== id),
+    }));
+  }
+
   onToggle = id => {
-    this.setState( prevState => {
-      return{
+    this.setState( prevState => ({      
         todos: prevState.todos.map(todo => {
           if(todo.id === id){
             return{...todo, completed: !todo.completed}
           }
           return todo;
-        })
-      }
-    })
-  }  
+        })      
+    }))
+  };
 
   render(){ 
     return (
@@ -35,11 +52,13 @@ class App extends React.Component {
         <TodoList 
         todos={this.state.todos}
         onToggle={this.onToggle}
+        onDelete={this.onDelete}
+        onAdd={this.onAdd}
         />
       </>
     
     );
   }
-}
+};
 
 export default App;
