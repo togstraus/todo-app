@@ -1,26 +1,45 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import TodoList from './components/TodoList';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+
+  constructor(props){
+    super(props);
+    this.state = {
+      todos: [
+        {d: 1 , title: 'Молоко', completed: false},
+        {id: 2 , title: 'Сыр', completed: false},
+        { id: 3 , title: 'Майонез', completed: false},
+      ]
+    }  
+  }
+
+  onToggle = id => {
+    this.setState( prevState => {
+      return{
+        todos: prevState.todos.map(todo => {
+          if(todo.id === id){
+            return{...todo, completed: !todo.completed}
+          }
+          return todo;
+        })
+      }
+    })
+  }  
+
+  render(){ 
+    return (
+      <>
+        <h1>My React Todo App</h1>
+        <TodoList 
+        todos={this.state.todos}
+        onToggle={this.onToggle}
+        />
+      </>
+    
+    );
+  }
 }
 
 export default App;
