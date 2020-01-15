@@ -16,7 +16,7 @@ class Todo extends React.Component {
 
     onAddHandler = () => {
         const {todo, onAdd} = this.props;
-        onAdd(todo.id);
+        onAdd(todo.title);
     };
 
     render() {
@@ -25,18 +25,18 @@ class Todo extends React.Component {
 
         return (   
             <>
-                {/* <span>
+                <span>
                     <input type="text" placeholder="Add todo"></input>  
-                    <button onClick={this.onAdd}>AddTodo</button>
-                </span>    */}
+                    <button onClick={this.onAddHandler}>AddTodo</button>
+                </span>   
                 <li>
                     <div onClick={this.onToggleHandler}>
                         <input type="checkbox" checked={completed} readOnly></input>
                         {index + 1}.
                         {' '}
                         <span>{title}</span>
-                    </div> 
-                    <button onClick={this.onDeleteHandler}>Delete</button>
+                        <button onClick={this.onDeleteHandler}>Delete</button>
+                    </div>                     
                 </li>     
             </>              
         );
