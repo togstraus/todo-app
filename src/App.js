@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
-import TodoList from './components/TodoList';
-import AddTodo from './components/AddTodo';
+// import TodoList from './components/TodoList';
+// import AddTodo from './components/AddTodo';
 import TodoScreen from './screen/TodoScreen'
 
 class App extends React.Component {
@@ -56,33 +56,11 @@ class App extends React.Component {
 
   
   render(){ 
-
-    const { todos, loading } = this.state;
-
-    return (
-      <>
-        <h1>My React Todo App</h1>
-        <AddTodo
-            onAdd={this.onAdd}
-        />
-        {loading ? (
-            <span>Loading...</span>
-            ) : todos.length !== 0 ? (
-            <TodoList 
-                todos={this.state.todos}
-                onToggle={this.onToggle}
-                onDelete={this.onDelete}            
-            />
-            ) : ( <span>Дела кончились :(</span>)
-        }        
-      </>    
-    
-  
-    // return(
-    //   <TodoScreen/>
-    // )
-    
-    )}
+    return(
+      <TodoScreen/>
+      
+    )    
+    }
 };
 
 export default App;

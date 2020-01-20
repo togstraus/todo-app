@@ -10,10 +10,12 @@ class AddTodo extends React.Component {
         
     }
      
-    onAddHandler = e => {        
+    onAddHandler = () => {        
         const {onAdd} = this.props;
         onAdd(this.state.input);        
-        e = '';        
+        this.setState({
+            input: ''
+        });                 
     };
 
     onChangeHandler = input => {
@@ -28,7 +30,7 @@ class AddTodo extends React.Component {
             <div>
                 <input 
                     type="text" 
-                    input={this.state.input} 
+                    value={this.state.input} 
                     onChange={this.onChangeHandler} 
                 />
                 <button 
