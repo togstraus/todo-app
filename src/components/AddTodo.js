@@ -4,35 +4,38 @@ import React from "react";
 class AddTodo extends React.Component {
     constructor(props) {
         super(props);
-
         this.state = {
             input: ''
         }
+        
     }
-
-    onAddHandler = () => {
+     
+    onAddHandler = e => {        
         const {onAdd} = this.props;
-        onAdd(this.state.input);
-        this.setState({
-            input: ''
-        });
+        onAdd(this.state.input);        
+        e = '';        
     };
 
-    onChangeHandler(e) {
+    onChangeHandler = input => {
         this.setState({
-            input: e.target.value
-        });
+            input: input.target.value
+        });        
     }
+    
 
     render() {        
         return (
             <div>
                 <input 
-                type="text" 
-                input={this.state.input} 
-                onChange={this.onChangeHandler} 
+                    type="text" 
+                    input={this.state.input} 
+                    onChange={this.onChangeHandler} 
                 />
-                <button onClick={this.onAddHandler}>Add</button>
+                <button 
+                    onClick={this.onAddHandler}
+                >
+                    Add
+                </button>
             </div>            
         )
     };
