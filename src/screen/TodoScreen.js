@@ -1,6 +1,6 @@
 import React from 'react'
-import TodoList from '../components/TodoList';
-import AddTodo from '../components/AddTodo';
+import TodoList from '../components/todo/TodoList';
+import AddTodo from '../components/todo/AddTodo';
 
 class TodoScreen extends React.Component{
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import Todo from './Todo';
 import PropTypes from 'prop-types'
-import { todoProps } from '../propTypes/proptypes';
+import { todoProps } from '../../propTypes/proptypes';
 
 const TodoList = ({todos = [], onToggle, onDelete, onAdd }) => (
     <ul>

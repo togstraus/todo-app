@@ -1,66 +1,23 @@
 import React from 'react';
 import './App.css';
-// import TodoList from './components/TodoList';
-// import AddTodo from './components/AddTodo';
 import TodoScreen from './screen/TodoScreen'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from 'react-router-dom';
 
-class App extends React.Component {
+const App = () => (
+  <Router>
+    <Switch>
+      <Route exact path="/">
+        <h2>Home</h2>        
+      </Route>
+      <Route path="/todo">
+        <TodoScreen/>
+      </Route>
+    </Switch>
+  </Router>     
+);
 
-  constructor(props){
-    super(props);
-    this.state = {
-      todos: [],
-      loading: true,
-    }  
-  }
-
-  componentDidMount(){
-    setTimeout(() => this.setState({
-      todos: [
-        {id: 1 , title: 'Молоко', completed: false},
-        {id: 2 , title: 'Сыр', completed: false},
-        {id: 3 , title: 'Майонез', completed: false},
-      ],
-      loading: false,
-    }), 3000);
-  }
-  onAdd = title => {
-    this.setState(prevState => ({
-      todos: [
-        ...prevState.todos,
-        {
-          id: Date.now(),
-          title,
-          completed: false,
-        }
-      ]
-    }))
-  };
-
-  onDelete = id => {
-    this.setState(prevState => ({
-      todos: prevState.todos.filter(todo => todo.id !== id),
-    }));
-  }
-
-  onToggle = id => {
-    this.setState( prevState => ({      
-        todos: prevState.todos.map(todo => {
-          if(todo.id === id){
-            return{...todo, completed: !todo.completed}
-          }
-          return todo;
-        })      
-    }))
-  };
-
-  
-  render(){ 
-    return(
-      <TodoScreen/>
-      
-    )    
-    }
-};
-
-export default App;
+ export default App;
