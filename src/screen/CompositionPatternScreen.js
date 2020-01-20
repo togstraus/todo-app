@@ -30,8 +30,8 @@ class CompositionPatternScreen extends React.Component{
     render(){
         return(
             <>
-                <this.renderTodoApp/>
-                <this.renderCard/>  
+                {this.renderTodoApp()},
+                {this.renderCard()}   
             </>
         );
     };
