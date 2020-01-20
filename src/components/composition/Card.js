@@ -16,7 +16,7 @@ const style = {
         flexDirection: 'column',
         alignItems: 'center',
     }
-}
+};
 
 const Card = ({ title = 'No Name', children }) => (
     <div style={style.container}>

@@ -22,7 +22,7 @@ class AddTodo extends React.Component {
         this.setState({
             input: input.target.value
         });        
-    }
+    };
     
 
     render() {        
@@ -42,6 +42,6 @@ class AddTodo extends React.Component {
         )
     };
 
-}
+};
 
 export default AddTodo;

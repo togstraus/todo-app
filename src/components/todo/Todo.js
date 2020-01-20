@@ -33,7 +33,7 @@ class Todo extends React.Component {
             </>              
         );        
     }
-}
+};
 
 Todo.propTypes = {
     index: PropTypes.number.isRequired,

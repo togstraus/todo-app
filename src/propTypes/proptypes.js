@@ -6,4 +6,4 @@ export const todoProps = PropTypes.shape({
         title: PropTypes.string.isRequired,
         completed: PropTypes.bool.isRequired,
     })
-})
+});

@@ -10,7 +10,7 @@ class TodoScreen extends React.Component{
           todos: [],
           loading: true,
         }  
-      }
+      };
     
       componentDidMount(){
         setTimeout(() => this.setState({
@@ -21,7 +21,7 @@ class TodoScreen extends React.Component{
           ],
           loading: false,
         }), 3000);
-      }
+      };
       onAdd = title => {
         this.setState(prevState => ({
           todos: [
@@ -39,7 +39,7 @@ class TodoScreen extends React.Component{
         this.setState(prevState => ({
           todos: prevState.todos.filter(todo => todo.id !== id),
         }));
-      }
+      };
     
       onToggle = id => {
         this.setState( prevState => ({      
@@ -76,7 +76,7 @@ class TodoScreen extends React.Component{
           </>
         
         );
-      }
-}
+      };
+};
 
 export default TodoScreen;
